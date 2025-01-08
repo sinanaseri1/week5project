@@ -3,7 +3,7 @@ import PostCard from "../components/PostCard";
 
 export default function Home() {
   return (
-    <div>
+    <div className="m-5">
       <PostCard />
     </div>
   );

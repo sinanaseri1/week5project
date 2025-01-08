@@ -38,19 +38,19 @@ const PostCard = () => {
       </CardContent>
       <CardFooter className="flex justify-between">
         <Button
-        className=""
+        className="bg-[#8ea604]"
         >Like
         </Button>
         <Button
-        className= ""
+        className= "bg-[#bf3100]"
         >Dislike
         </Button>
         <div className="flex gap-1">
-           <p className="font-semibold text-[#8ea604] text-small">{}</p>
+           <p className="font-semibold text-[#8ea604] text-small">?</p>
            <p className="text-[#8ea604] text-small">Liked</p>
          </div>
          <div className="flex gap-1">
-           <p className="font-semibold text-[#bf3100] text-small">{}</p>
+           <p className="font-semibold text-[#bf3100] text-small">?</p>
            <p className="text-[#bf3100] text-small">Disliked</p>
         </div>
       </CardFooter>
