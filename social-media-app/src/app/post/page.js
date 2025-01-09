@@ -2,10 +2,10 @@
 "use client";
 
 import React, { useState } from "react";
-import Notification from "../components/Notification";
+import Notification from "@/components/Notification";
 
 export default function PostPage() {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState(""); 
   const [imageURL, setImageURL] = useState("");
   const [description, setDescription] = useState("");
 
