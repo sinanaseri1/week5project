@@ -26,7 +26,7 @@ const Navbar = () => {
 						{ 
 							items.map(
 								(item) => (
-								<a href={item === "FEED" ? "/" : item.toLocaleLowerCase()}>
+								<a key={item} href={item === "FEED" ? "/" : item.toLocaleLowerCase()}>
 								<li key={item} 
 									className="bg-gradient-to-b to-[#D76A03] from-[#EC9F05] border-solid border-[#FFFBEC] border-2 
 												hover:border-[#BF3100] hover:text-[#BF3100] transition-all transition-500

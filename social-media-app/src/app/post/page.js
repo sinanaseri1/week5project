@@ -1,17 +1,23 @@
 // src/app/post/post.js
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Notification from "@/components/Notification";
 
 export default function PostPage() {
-  const [username, setUsername] = useState(""); 
+  const [username, setUsername] = useState("");
   const [imageURL, setImageURL] = useState("");
   const [description, setDescription] = useState("");
 
   const [notification, setNotification] = useState({
     type: "",
     message: "",
+  });
+
+  const [post, setPost] = useState({
+    user_name: "",
+    image_URL: "",
+    description_: ""
   });
 
   function handleSubmit(e) {
@@ -36,6 +42,38 @@ export default function PostPage() {
     setUsername("");
     setImageURL("");
     setDescription("");
+
+    // Set local storage
+
+    const localStoragePosts = localStorage.getItem("posts");
+
+    setPost({
+      user_name: username,
+      image_URL: imageURL,
+      description_: description
+    })
+
+    const postWithId = {
+      ...post,
+      id: localStoragePosts ? JSON.parse(localStoragePosts.length + 1) : 0
+    }
+
+    if(localStoragePosts) {
+    localStorage.setItem(
+      "posts", 
+      JSON.stringify(
+        [...JSON.parse(localStoragePosts),
+          postWithId
+        ]
+      )
+    )
+   } else {
+    localStorage.setItem(
+      "posts", 
+      JSON.stringify([ postWithId ])
+    )
+  }
+  
   }
 
   return (
