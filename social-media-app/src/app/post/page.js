@@ -1,24 +1,38 @@
 // src/app/post/post.js
-"use client"; 
+"use client";
 
 import React, { useState } from "react";
+import Notification from "../components/Notification";
 
 export default function PostPage() {
   const [username, setUsername] = useState("");
   const [imageURL, setImageURL] = useState("");
   const [description, setDescription] = useState("");
 
+  const [notification, setNotification] = useState({
+    type: "",
+    message: "",
+  });
+
   function handleSubmit(e) {
     e.preventDefault();
 
-    // For now, just console log.
-    console.log("New Post Data:", {
-      username,
-      imageURL,
-      description,
+    // Validation logic
+    if (!username.trim() || !imageURL.trim() || !description.trim()) {
+      setNotification({
+        type: "error",
+        message: "Please fill out all fields before submitting.",
+      });
+      return;
+    }
+
+    // If successful
+    setNotification({
+      type: "success",
+      message: "Post has been successfully added!",
     });
 
-    // Reset fields or keep them—your choice.
+    // Reset fields
     setUsername("");
     setImageURL("");
     setDescription("");
@@ -27,6 +41,13 @@ export default function PostPage() {
   return (
     <div className="max-w-md mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Create a New Post</h1>
+
+      {/* Notification Component */}
+      <Notification
+        type={notification.type}
+        message={notification.message}
+        onClose={() => setNotification({ type: "", message: "" })}
+      />
 
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Username */}
@@ -73,7 +94,7 @@ export default function PostPage() {
 
         <button
           type="submit"
-          className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-500"
+          className="bg-green-600 text-white py-2 px-4 rounded hover:bg-orange-400"
         >
           Submit Post
         </button>
