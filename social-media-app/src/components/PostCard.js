@@ -15,9 +15,9 @@ import {
 } from "@/components/ui/card";
 
 const PostCard = ({ username, description, imageURL, updateStateInParent }) => {
+
   const [count, setCount] = useState(0);
 
- 
   const buttonHandler = () => {
     setCount(count + 1);
   };
@@ -50,11 +50,11 @@ const PostCard = ({ username, description, imageURL, updateStateInParent }) => {
         <Button className="bg-[#bf3100]"
         onClick={buttonHandler}>Dislike</Button>
         <div className="flex gap-1">
-          <p className="font-semibold text-[#8ea604] text-small">?</p>
+          <p className="font-semibold text-[#8ea604] text-small">{count}</p>
           <p className="text-[#8ea604] text-small">Liked</p>
         </div>
         <div className="flex gap-1">
-          <p className="font-semibold text-[#bf3100] text-small">?</p>
+          <p className="font-semibold text-[#bf3100] text-small">{count}</p>
           <p className="text-[#bf3100] text-small">Disliked</p>
         </div>
       </CardFooter>
