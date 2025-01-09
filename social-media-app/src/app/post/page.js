@@ -14,11 +14,11 @@ export default function PostPage() {
     message: "",
   });
 
-  const [post, setPost] = useState({
+  /*const [post, setPost] = useState({
     user_name: "",
     image_URL: "",
     description_: ""
-  });
+  });*/
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -42,14 +42,10 @@ export default function PostPage() {
 
     const localStoragePosts = localStorage.getItem("posts");
 
-    setPost({
+    const post = {
       user_name: username,
       image_URL: imageURL,
-      description_: description
-    })
-
-    const postWithId = {
-      ...post,
+      description_: description,
       id: localStoragePosts ? JSON.parse(localStoragePosts.length + 1) : 0
     }
 
@@ -58,14 +54,14 @@ export default function PostPage() {
       "posts", 
       JSON.stringify(
         [...JSON.parse(localStoragePosts),
-          postWithId
+          post
         ]
       )
     )
    } else {
     localStorage.setItem(
       "posts", 
-      JSON.stringify([ postWithId ])
+      JSON.stringify([ post ])
     )
   }
 

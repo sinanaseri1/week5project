@@ -15,6 +15,7 @@ export default function Home() {
       const storedPosts = localStorage.getItem("posts");
       if (storedPosts) {
         setPosts(JSON.parse(storedPosts));
+        console.log(storedPosts);
       }
     } catch (error) {
       console.log("There was an error")
@@ -29,16 +30,16 @@ export default function Home() {
     });
   };
 
-  posts.forEach((post) => console.log(post));
-  console.log(JSON.parse(localStorage.getItem("posts")));
 
   return (
-    <div className="m-5">
-{posts.map((post) => 
+    <div className="m-5 flex flex-col items-center justify-center gap-4">
+
+      {posts.slice().reverse().map((post) => 
         (
         <PostCard key={post.id} username={post.user_name}  description={post.description_} imageURL={post.image_URL} />)
         )
       }
+
     </div>
   );
 }
