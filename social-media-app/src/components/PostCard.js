@@ -16,11 +16,17 @@ import {
 
 const PostCard = ({ username, description, imageURL, updateStateInParent }) => {
 
-  const [count, setCount] = useState(0);
+  const [likeCount, setLikeCount] = useState(0);
+  const [dislikeCount, setDislikeCount] = useState(0);
 
-  const buttonHandler = () => {
-    setCount(count + 1);
-  };
+  // const buttonHandler = () => {
+  //   setLikeCount(count + 1);
+  // };
+
+  // const dislikeButtonHandler = () => {
+  //   setCount(count + 1);
+  // };
+
 
   return (
     <Card className="w-[450px] shadow-xl">
@@ -46,15 +52,15 @@ const PostCard = ({ username, description, imageURL, updateStateInParent }) => {
       </CardContent>
       <CardFooter className="flex justify-between">
         <Button className="bg-[#8ea604]"
-        onClick={buttonHandler}>Like</Button>
+        onClick={() => setLikeCount(likeCount + 1)}>Like</Button>
         <Button className="bg-[#bf3100]"
-        onClick={buttonHandler}>Dislike</Button>
+        onClick={() => setDislikeCount(dislikeCount + 1)}>Dislike</Button>
         <div className="flex gap-1">
-          <p className="font-semibold text-[#8ea604] text-small">{count}</p>
+          <p className="font-semibold text-[#8ea604] text-small">{likeCount}</p>
           <p className="text-[#8ea604] text-small">Liked</p>
         </div>
         <div className="flex gap-1">
-          <p className="font-semibold text-[#bf3100] text-small">{count}</p>
+          <p className="font-semibold text-[#bf3100] text-small">{dislikeCount}</p>
           <p className="text-[#bf3100] text-small">Disliked</p>
         </div>
       </CardFooter>
