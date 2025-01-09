@@ -38,11 +38,6 @@ export default function PostPage() {
       message: "Post has been successfully added!",
     });
 
-    // Reset fields
-    setUsername("");
-    setImageURL("");
-    setDescription("");
-
     // Set local storage
 
     const localStoragePosts = localStorage.getItem("posts");
@@ -73,6 +68,11 @@ export default function PostPage() {
       JSON.stringify([ postWithId ])
     )
   }
+
+   // Reset fields
+   setUsername("");
+   setImageURL("");
+   setDescription("");
   
   }
 

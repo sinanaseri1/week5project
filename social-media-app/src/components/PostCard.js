@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PostPage from "@/app/post/page";
 
 import { Button } from "@/components/ui/button";
@@ -14,13 +14,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-
-
-const PostCard = ({ title, updateStateInParent }) => {
+const PostCard = ({ username, description, imageURL, updateStateInParent }) => {
   const [count, setCount] = useState(0);
 
-  const [posts, setPosts] = useState([]);
-
+ 
   const buttonHandler = () => {
     setCount(count + 1);
   };
@@ -28,10 +25,9 @@ const PostCard = ({ title, updateStateInParent }) => {
   return (
     <Card className="w-[450px] shadow-xl">
       <CardHeader>
-        <CardTitle>Hello</CardTitle>
+        <CardTitle>{username}</CardTitle>
         <CardDescription>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel
-          justo vel lorem volutpat faucibus.{" "}
+          {description}
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -41,7 +37,7 @@ const PostCard = ({ title, updateStateInParent }) => {
               <img
                 alt="social media picture"
                 className="object-cover rounded-xl"
-                src="https://i.ibb.co/8dV8jS3/card-robot.jpg"
+                src={imageURL}
                 fill="true"
               />
             </div>
