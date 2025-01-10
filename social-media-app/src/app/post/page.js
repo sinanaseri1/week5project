@@ -14,12 +14,6 @@ export default function PostPage() {
     message: "",
   });
 
-  /*const [post, setPost] = useState({
-    user_name: "",
-    image_URL: "",
-    description_: ""
-  });*/
-
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -46,30 +40,22 @@ export default function PostPage() {
       user_name: username,
       image_URL: imageURL,
       description_: description,
-      id: localStoragePosts ? JSON.parse(localStoragePosts.length + 1) : 0
+      id: localStoragePosts ? JSON.parse(localStoragePosts.length + 1) : 0,
+    };
+
+    if (localStoragePosts) {
+      localStorage.setItem(
+        "posts",
+        JSON.stringify([...JSON.parse(localStoragePosts), post])
+      );
+    } else {
+      localStorage.setItem("posts", JSON.stringify([post]));
     }
 
-    if(localStoragePosts) {
-    localStorage.setItem(
-      "posts", 
-      JSON.stringify(
-        [...JSON.parse(localStoragePosts),
-          post
-        ]
-      )
-    )
-   } else {
-    localStorage.setItem(
-      "posts", 
-      JSON.stringify([ post ])
-    )
-  }
-
-   // Reset fields
-   setUsername("");
-   setImageURL("");
-   setDescription("");
-  
+    // Reset fields
+    setUsername("");
+    setImageURL("");
+    setDescription("");
   }
 
   return (
