@@ -6,3 +6,18 @@ A page with a form that lets users add a new post (username, text, optional medi
 A navigation bar to move between pages.
 Like buttons on each post that increment the like count.
 A notification/feedback mechanism when a new post is created (success or error).
+
+2. File Structure
+
+```
+
+C:.
+├───app
+│   └───page (post & feed)
+├───components
+│   └───navbar
+│   └───notification
+│   └───postcard
+└───lib
+
+```
